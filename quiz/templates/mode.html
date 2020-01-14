@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+        {% block title %}Select a Mode{% endblock %}
+    {% block content %}
+
+    <h2>Press 1, 2, or 3 to continue</h2>
+    <section>
+        <h4>
+            Which mode of operation do you want?
+        </h4>
+        <ol>
+            <li>
+                Random question, 4 out of 8 answers in random order
+            </li>
+            <li>
+                Selectable question start, 8 out of 8 answers in random order
+            </li>
+            <li>
+                Selectable question start, 8 out of 8 answers in sequential order
+            </li>
+        </ol>
+    </section>
+    <section class="row mode-buttons">
+        <div class="col-md-3">
+            <a href="{% url 'quiz:question' 1 %}" class="btn btn-default btn-primary">1</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'quiz:question' 2 %}" class="btn btn-default btn-primary">2</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'quiz:question' 3 %}" class="btn btn-default btn-primary">3</a>
+        </div>
+    </section>
+        <script>
+        $("div.start-container").hide()
+        $("input[name='mode']").change(function(event){
+            if ($(this).val() == 2 || $(this).val() == 3) {
+                $("div.start-container").show()
+            }
+            else{
+                $("div.start-container").hide()
+
+            }
+        })
+      </script>
+    {% endblock %}

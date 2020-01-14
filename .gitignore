@@ -1,0 +1,9 @@
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+*/migrations/*
+*/__pycache__/*
+db.sqlite3
+*.pyc

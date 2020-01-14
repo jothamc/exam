@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<form action="{% url 'quiz:ajax' %}" method="POST" id="questions-form">
+    {% csrf_token %}
+</form>
+<script>
+    var csrf_token = '{{csrf_token}}';
+    var modeURL = "{% url 'quiz:questions' mode %}";
+</script>
+<script src="{% static 'ajax-script.js' %}"></script>
+{% endblock content %}

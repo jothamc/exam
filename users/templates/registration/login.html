@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+  	<h3 class="">Login into your account</h3>
+	<form action="{% url 'quiz:login' %}" method="POST" class="">
+		{% csrf_token %}
+		<div class="form-group">
+			<input class="form-control" type="text" id="id_username" name="username" required autofocus placeholder="Username">
+		</div>
+		<div class="form-group">
+			<input class="form-control" type="password" id="id_password" name="password" required placeholder="Password">
+		</div>
+				
+		{% if form.errors %}
+			<p class="text-danger">Username or password incorrect!</p>
+		{% endif %}
+			<button type="submit" class="btn btn-default btn-success">Log In</button>
+			<input type="hidden" name="next" value="{{ next }}">
+		</form>
+
+  	</div>
+
+  </section>
+{% endblock %}

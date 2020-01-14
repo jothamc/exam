@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Answers</title>
+</head>
+<body>
+    {% for answer,options in answers.items %}
+    <div>
+        <h4>{{answer}}</h4>
+        
+        {% for option,value in options.items %}
+            
+            {% if value %}
+                <p>{{option}}:Correct!</p>
+            {% else %}
+                <p>{{option}}:Wrong!</p>
+            {% endif %}
+                
+        {% endfor %}
+            
+    </div>
+    {% endfor %}
+</body>
+</html>

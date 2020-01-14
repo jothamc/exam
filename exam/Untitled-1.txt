@@ -1,0 +1,4 @@
+Configure page to show one answer at a time
+--COnfigure page to recieve an input and change to next answer
+Configure mode 1 to have timer and score at end
+Configure modes 2 and 3 to have score at top right corner
