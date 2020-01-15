@@ -18,25 +18,22 @@
 .question-container .question {
     margin-bottom: 10px;
     border-bottom: 2px solid lightgrey;
-    text-align:center;
     padding:5px 10px;
 }
 .question h5{
     font: 25px Georgia;
-    text-align: left;
+}
+.question img{
+    max-height: 40px;
 }
 .options {
     margin:5px auto;
-    text-align: center;
     border-bottom:1px solid lightgrey;
     padding:10px;
 }
 .options img{
-    max-width: 100%;
-    max-height: 70vh;
+    max-height: 25px;
 }
 .options label{
-    display: block;
-    text-align:left;
     font:16px Georgia;
 }

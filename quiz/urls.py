@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ajaxQuestionsView,ModeView,ajaxAnswer,QuestionTemplate,CreateUser
+from .views import ajaxQuestionsView,ModeView,ajaxAnswer,QuestionTemplate,CreateUser,QuestionTemplate
 from django.contrib.auth.views import LoginView
 
 app_name = "quiz"
@@ -10,4 +10,5 @@ urlpatterns = [
     path("mode/<mode>/",QuestionTemplate,name="question"),
     path("ajax-question/<mode>/",ajaxQuestionsView,name="questions"),
     path("ajax-answer/",ajaxAnswer,name="ajax"),
+    path("q1/<mode>/",QuestionTemplate),
 ]

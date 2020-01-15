@@ -152,6 +152,6 @@ def ajaxAnswer(request):
       continue
   return JsonResponse({"answer":answer})
 
-@login_required
+# @login_required
 def QuestionTemplate(request,mode):
-  return render(request, "questions.html",{"mode":mode})
+  return render(request, "question-1.html",{"mode":mode})

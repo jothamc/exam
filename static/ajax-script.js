@@ -12,15 +12,20 @@ function newQuestion(number,option){
     return template
 }
 
-function newOption(number,option){
+function newOption(number, option) {
     //Generates HTML for new option in a question
-    var container = $("<div class='options'>")
-    container.append($("<label>").text("Option "+option.toUpperCase()))
-    container.append($("<img class='img-fluid' src='/media/"+number+option+".jpg' alt='"+number+option+"'>"))
-    var content = $("<div class='option input-group'>")
+    var container = $("<div class='options' id='" + number + "-" + option + "'>")
+    var row1 = $("<div class='row'>")
+    var row2 = $("<div class='row option'>")
+    row1.append($("<label class='col-md-2'>").text("Option " + option.toUpperCase()))
+    row1.append($("<img class='col-md-10 img-fluid' src='/media/" + number + option + ".jpg' alt='" + number + option + "'>"))
+    container.append(row1)
+    var content = $("<div class='col-md-11 input-group'>")
     content.append($("<div class='input-group-prepend'>").append($("<span class='input-group-text'>").text("Enter A or D")))
-    content.append($("<input type='text' class='form-control answer' name='"+number+"-"+option+"' required>"))
-    container.append(content)
+    content.append($("<input type='text' class='form-control answer' name='" + number + "-" + option + "' required>"))
+    row2.append(content)
+    row2.append($("<div class='col-md-1'>").append($("<span class='fa fa-2x a-status'>")))
+    container.append(row2)
     return container
 }
 
@@ -42,12 +47,20 @@ var checkInputAnswer = function(event){
             type:"POST",
             data:input.serialize(),
             success:function(data){
-                alert(data.answer)
                 params = input.serializeArray()[0]
                 num_option = params.name.split("-")
                 num = num_option[0]
                 option = num_option[1]
-                if (askQ(num,option) == false) askQ()
+                let status_span = $("#" + params.name + " .col-md-1 span.a-status")
+                input.attr({"disabled":""})
+                if (data.answer == true) {
+                    status_span.removeClass("text-danger fa-times-circle")
+                    status_span.addClass("text-success fa-check-circle")
+                } else {
+                    status_span.removeClass("text-success fa-times-circle")
+                    status_span.addClass("text-danger fa-times-circle")
+                }
+                if (askQ(num, option) == false) askQ()
             }
         })
     }
